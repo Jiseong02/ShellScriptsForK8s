@@ -59,9 +59,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 echo "Initiating kubeadm with Calico CIDR."
 sudo systemctl enable --now kubelet
 kubeadm init --apiserver-advertise-address=172.27.0.48 --pod-network-cidr=192.168.0.0/16
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+export KUBECONFIG=/etc/kubernetes/admin.conf
 
 echo "Installing Calico."
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/tigera-operator.yaml
