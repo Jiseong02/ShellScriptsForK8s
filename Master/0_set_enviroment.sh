@@ -19,5 +19,5 @@ echo "Migrating Systemd to Cgroup v2 from Cgroup v1."
 sudo sed -i 's/GRUB_CMDLINE_LINUX="/GRUB_CMDLINE_LINUX="systemd.unified_cgroup_hierarchy=1 /' /etc/default/grub
 sudo update-grub
 
-echo "After Rebooting computer. please execute the next process."
+echo "After Rebooting machine. please execute the next process."
 reboot
