@@ -8,6 +8,7 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml
 
 echo "Waiting for all pods in all namespaces to be in 'Running' state."
+kubectl get pods --all-namespaces
 MAX_RETRIES=60 
 SLEEP_INTERVAL=5 
 RETRY_COUNT=0
