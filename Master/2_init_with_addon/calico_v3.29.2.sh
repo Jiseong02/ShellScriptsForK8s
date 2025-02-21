@@ -17,7 +17,7 @@ MAX_RETRIES=60
 SLEEP_INTERVAL=5 
 RETRY_COUNT=0
 while [ "$RETRY_COUNT" -lt "$MAX_RETRIES" ]; do
-  NOT_READY_COUNT=$(kubectl get pods --all-namespaces --no-headers | grep -v "Running" | wc -l)
+  NOT_READY_COUNT=$(kubectl get pods -n calico-system | grep -v "Running" | wc -l)
   if [ "$NOT_READY_COUNT" -eq 0 ]; then
     break
   else
