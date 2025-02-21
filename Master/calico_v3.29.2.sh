@@ -11,13 +11,13 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/tigera-operator.yaml
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml
 
-echo "Waiting for all pods in all namespaces to be in 'Running' state."
-kubectl get pods --all-namespaces
+echo "Waiting for all pods in calico-system namespaces to be in 'Running' state."
+kubectl get pods -n calico-system
 MAX_RETRIES=60 
 SLEEP_INTERVAL=5 
 RETRY_COUNT=0
 while [ "$RETRY_COUNT" -lt "$MAX_RETRIES" ]; do
-  NOT_READY_COUNT=$(kubectl get pods -n calico-system | grep -v "Running" | wc -l)
+  NOT_READY_COUNT=$(kubectl get pods -n calico-system --no-headers | awk '{print $3}' | grep -vc "^Running$")
   if [ "$NOT_READY_COUNT" -eq 0 ]; then
     break
   else
