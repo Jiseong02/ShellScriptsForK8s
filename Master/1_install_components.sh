@@ -34,9 +34,9 @@ echo "===2. Kubernetes Components installation==="
 
 echo "Installing kubelet and kubeadm and kubectl."
 sudo apt-get update
-echo "wait until unattended-upgrades process done..."
+echo "Wait until unattended-upgrades process done... this process may take a long time."
 while pgrep unattended-upgr >/dev/null 2>&1; do
-    sleep 5
+    sleep 10
 done
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 sudo mkdir -p -m 755 /etc/apt/keyrings
