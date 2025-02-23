@@ -5,6 +5,7 @@ if [ ! -f /etc/kubernetes/admin.conf ]; then
   echo "Initiate Kubeadm First!"
   echo "Example: sudo kubeadm init --apiserver-advertise-address 'your-gateway-ip' --pod-network-cidr=192.168.0.0/16"
   exit 1
+fi
 
 echo "===0.Calico Installation==="
 mkdir -p $HOME/.kube
