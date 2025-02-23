@@ -13,21 +13,5 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2
 
 echo "Waiting for all pods in calico-system namespaces to be in 'Running' state."
 kubectl get pods -n calico-system
-MAX_RETRIES=60 
-SLEEP_INTERVAL=5 
-RETRY_COUNT=0
-while [ "$RETRY_COUNT" -lt "$MAX_RETRIES" ]; do
-  NOT_READY_COUNT=$(kubectl get pods -n calico-system --no-headers | awk '{print $3}' | grep -vc "^Running$")
-  if [ "$NOT_READY_COUNT" -eq 0 ]; then
-    break
-  else
-    sleep "$SLEEP_INTERVAL"
-    ((RETRY_COUNT++))
-  fi
-done
-if [ "$NOT_READY_COUNT" -ne 0 ]; then
-  echo "Timeout: Pods did not reach 'Running' state within the expected time."
-  exit 1
-fi
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl get nodes -o wide
