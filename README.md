@@ -1,8 +1,6 @@
 # ShellScriptsForK8s
+쿠버네티스를 통한 클러스터 서버 초기 환경 설정을 위한 리포지토리.
 
 1. base - Basement settings for all nodes 
 2. master - settings for master node
 3. worker - settings for worker node (Soon)
-
-Calico를 사용한 초기화는 '단일 네트워크 인터페이스' 환경을 가정하고 있습니다.
-다중 네트워크 인터페이스 환경에선 API 서버 접근 경로를 명확히 명시하기 위해 kubeadm init 명령과 함께 --apiserver-advertise-address=주소 를 추가하는 걸 추천합니다!!
