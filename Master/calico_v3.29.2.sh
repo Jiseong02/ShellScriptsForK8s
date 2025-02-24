@@ -16,3 +16,4 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml
 
 echo "Check All Nodes are 'Running' before next steps."
+echo "Example: watch kubectl get pods --namespace calico-system"
