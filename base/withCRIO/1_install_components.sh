@@ -28,6 +28,7 @@ echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://download.o
     tee /etc/apt/sources.list.d/cri-o.lis
 
 echo "Installing CRI-O"
+apt-get update
 apt-get install -y cri-o
 systemctl start crio.service
 
