@@ -25,7 +25,7 @@ curl -fsSL https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v1.32/
     gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
 
 echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v1.32/deb/ /" |
-    tee /etc/apt/sources.list.d/cri-o.lis
+    tee /etc/apt/sources.list.d/cri-o.list
 
 echo "Installing CRI-O"
 apt-get update
