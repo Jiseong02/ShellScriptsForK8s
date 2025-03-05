@@ -27,6 +27,10 @@ curl -fsSL https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v1.32/
 echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v1.32/deb/ /" |
     tee /etc/apt/sources.list.d/cri-o.lis
 
+echo "Installing CRI-O"
+apt-get install -y cri-o
+systemctl start crio.service
+
 echo "Installing runc."
 wget https://github.com/opencontainers/runc/releases/download/v1.2.5/runc.amd64
 install -m 755 runc.amd64 /usr/local/sbin/runc
