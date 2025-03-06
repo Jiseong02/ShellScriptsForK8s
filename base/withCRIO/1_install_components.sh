@@ -3,8 +3,8 @@ set -e
 
 echo "===Kubernetes Components installation==="
 
-KUBERNETES_VERSION=1.31
-CRIO_VERSION=1.31
+KUBERNETES_VERSION=v1.32
+CRIO_VERSION=v1.32
 
 echo "Enabling IPv4 packet forwarding."
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
