@@ -2,9 +2,13 @@
 set -e
 
 echo "installing the Helm CLI"
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
-    && chmod 700 get_helm.sh \
-    && ./get_helm.sh
+if ! command -v helm &> /dev/null; then
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
+else
+    echo "Helm is already installed."
+fi
 
 kubectl create ns gpu-operator
 kubectl label --overwrite ns gpu-operator pod-security.kubernetes.io/enforce=privileged
